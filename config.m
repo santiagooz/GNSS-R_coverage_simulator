@@ -7,13 +7,9 @@
 time_interval = 1 * 24 * 3600;   % total time interval for the simulation [secs]
 dt = 1;                          % time resolution [integer secs]
 
+% REGISTER LENGTH
+reg_len = 60; % register length in [secs]
 
-% ANTENNA BEAM - aperture angles can be extracted from an antenna pattern
-% file or set as input parameters
-ant_filename = 'files/Realized_Gain_Table_L1.xlsx'; % filename: antenna gain pattern
-theta_x0 = 0; % Maximum gain direction along track [degrees]
-theta_y0 = 0; % Maximum gain direction across track [degrees]
-theta_x = 15; theta_y = 45; % aperture angles in case there is no antenna pattern file present [degrees]
 
 
 % GPS SATELLITES
@@ -25,12 +21,19 @@ leo_filename = 'files/PosW.42'; % filename: LEO orbit ECEF
 leo_alt = 600e3; % nominal LEO sat altitude
 
 
-% REGISTER LENGTH
-reg_len = 60; % register length in [secs]
-
-
+% SP LOCATIONS
 load_sp = 1; % load SP locations file flag: 0 calculates SP locations - 1 loads file (saves time)
 sp_filename = strcat("files/sp_locations_"+"dt_"+num2str(dt)+"_dur_"+num2str(time_interval)+".mat"); % sp locations filename to save/load
+
+
+% ANTENNA BEAM - aperture angles can be extracted from an antenna pattern
+% file or set as input parameters
+ant_filename = 'files/Realized_Gain_Table_L1.xlsx'; % filename: antenna gain pattern
+theta_x0 = 0; % Maximum gain direction along track [degrees]
+theta_y0 = 0; % Maximum gain direction across track [degrees]
+theta_x = 15; theta_y = 45; % aperture angles in case there is no antenna pattern file present [degrees]
+
+
 
 %%
 % TIME INTERVAL

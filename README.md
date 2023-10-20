@@ -1,62 +1,30 @@
 # LEO satellite coverage simulation for GNSS-R
 
-Set of Matlab scripts to estimate the number and characteristics of the reflections captured by an LEO satellite for GNSS-R applications.
+Set of Matlab scripts to simulate the coverage of GNSS-R events with GPS signals from an LEO satellite trajectory.
 
 ## Description
 
-An in-depth paragraph about your project and overview of use.
+This set of scripts calculates the position of the specular reflection points in a bistatic geometry with the GPS constellation based on the input LEO trajectory. Then, modelling the antenna beam as an elliptical cone with the input aperture angles, determines which reflections are being captured, i. e. the specular reflection points that are within the modelled antenna footprint.
+The results are the location and number of specular reflection points of the signals captured during the simulation time interval.
+Three relevant characteristics of the reflections are given as output as well: incidence angle, path-loss for diffuse reflections and, if an antenna pattern file is available, the receiver antenna gain for each reflection. These results are given for a global coverage and for the Argentinean territory.
+It also gives statistics in the presence of signals in limited time registers. This is useful to plan the capture of raw IF intermediate signals where the registers are time limited due to the high number of samples to store and downlink.
+To present the results, a series
 
 ## Getting Started
 
-### Dependencies
-
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
-
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
+The input parameters for the simulation are defined in the configuration file, including the simulation time interval and paths to the necessary file. The mandatory input files are two: a rinex file with the GNSS ephemeris data, a file containing the LEO satellite trajectory in ECEF coordinates. Additionaly, a file with the antenna gain pattern can be loaded to extract the antenna aperture angles and gain values for the received signals. When running the script for the first time, it will automatically save a .mat file with the calculated specular reflection points position during the simulated time interval. The sp_file can be loaded when using the same time interval in future occasions.
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+Edit the input parameters in config.m to fit your simulation.
+* Define the desired time interval with the appropiate time resolution. The time resolution has to be an integer value in seconds.
+* Set the correct paths to the rinex navigation file and LEO satellite trajectory file.
+* Define the length of the time limited register, this is for the time limited satistical analysis.
+* If there is a previous sp_locations file for this time interval and resolution, it can be loaded by setting the load_sp flag to 1.
+* Also, if there is a receiver antenna gain pattern file for different values of elevation and azimuth, its path has to be set as input as well.
+* After configuration, run the complete main.m script.
 
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
-
-## Authors
-
-Contributors names and contact info
-
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
-
-## Version History
-
-* 0.2
-    * Various bug fixes and optimizations
-    * See [commit change]() or See [release history]()
-* 0.1
-    * Initial Release
-
-## License
-
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+The script SpecularReflectionPoint.m was developed by Lucas Sanz, 2021, UIDET-SENyT, Facultad de Ingenieria, UNLP.
