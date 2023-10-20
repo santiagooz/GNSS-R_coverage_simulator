@@ -16,13 +16,13 @@ A series of plots are generated to illutrate the result and histograms to presen
 
 ## Getting Started
 
-The input parameters for the simulation are defined in the configuration file, including the simulation time interval and paths to the necessary file. The mandatory input files are two: a rinex file with the GNSS ephemeris data and a file containing the LEO satellite trajectory in ECEF coordinates. Additionaly, a file with the antenna gain pattern can be loaded to extract the antenna aperture angles and gain values for the received signals. When running the script for the first time, it will automatically save a .mat file with the calculated specular reflection points position during the simulated time interval. The sp_file can be loaded when using the same time interval in future occasions.
+The input parameters for the simulation are defined in the configuration file, including the simulation time interval and paths to the necessary files. The mandatory input files are two: a rinex file with the GNSS ephemeris data and a file containing the LEO satellite trajectory in ECEF coordinates. Additionaly, a file with the antenna gain pattern can be loaded to extract the antenna aperture angles and gain values for the received signals. When running the script for the first time, it will automatically save a .mat file with the calculated specular reflection points position during the simulated time interval. The sp_file can be loaded when using the same time interval in future occasions.
 
 ### Executing program
 
 Edit the input parameters in config.m to fit your simulation.
 * Define the desired time interval with the appropiate time resolution. The time resolution has to be an integer value in seconds.
-* Set the correct paths to the rinex navigation file and LEO satellite trajectory file.
+* Set the correct paths to the rinex navigation file and LEO satellite trajectory file. It is assumed that the time resolution in the LEO trajectory is 1 second.
 * Define the length of the time limited register, this is for the time limited satistical analysis.
 * If there is a previous sp_locations file for this time interval and resolution, it can be loaded by setting the load_sp flag to 1.
 * Also, if there is a receiver antenna gain pattern file for different values of elevation and azimuth, its path has to be set as input as well.
