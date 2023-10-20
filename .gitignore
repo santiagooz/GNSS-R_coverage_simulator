@@ -1,0 +1,6 @@
+results/
+figs/
+videos/
+*.asv
+*.mlx
+*.mat
