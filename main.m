@@ -33,7 +33,7 @@ if load_sp == 0 | ~isfile(sp_filename)
         time_per_loop = time_past/nn;
         time_left = (N-nn)*time_per_loop;
         time_left_h = floor(time_left/3600);
-        time_left_m = floor((time_left - time_left_h*60)/60);
+        time_left_m = floor((time_left - time_left_h*3600)/60);
         time_left_s = floor(time_left - time_left_h*3600 - time_left_m*60);
         msg = sprintf('   Calculating specular reflection points position: %i%% completed   \n%i:%i:%i remaining', floor(nn/N*100), time_left_h, time_left_m, time_left_s);
         waitbar(nn/N, wb, msg)
