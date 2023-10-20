@@ -18,6 +18,10 @@ A series of plots are generated to illutrate the result and histograms to presen
 
 The input parameters for the simulation are defined in the configuration file, including the simulation time interval and paths to the necessary files. The mandatory input files are two: a rinex file with the GNSS ephemeris data and a file containing the LEO satellite trajectory in ECEF coordinates. Additionaly, a file with the antenna gain pattern can be loaded to extract the antenna aperture angles and gain values for the received signals. When running the script for the first time, it will automatically save a .mat file with the calculated specular reflection points position during the simulated time interval. The sp_file can be loaded when using the same time interval in future occasions.
 
+### Dependencies
+
+* Matlab R2022a.
+
 ### Executing program
 
 Edit the input parameters in config.m to fit your simulation.
